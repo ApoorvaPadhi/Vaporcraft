@@ -2,10 +2,11 @@
   "name": "vaporcraft",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://apoorvapadhi.github.io/vaporcraft/",
   "scripts": {
     "scripts": {
       "build": "react-scripts build"
-}
+    }
   },
   "dependencies": {
     "react": "19.0.0-rc-66855b96-20241106",
