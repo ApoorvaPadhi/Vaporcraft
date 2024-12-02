@@ -1,7 +1,35 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  // Enable React Strict Mode for better error detection during development
+  reactStrictMode: true,
+
+  // Enable SWC minification for faster builds
+  swcMinify: true,
+
+  // Configure for Vercel deployment (standalone output)
+  output: "standalone",
+
+  // Set experimental features (optional)
+  experimental: {
+    appDir: true, // Enables the App Router
+    optimizeCss: true, // Optimize CSS for production
+  },
+
+  // Allow custom webpack configurations if needed
+  webpack: (config) => {
+    // Example: Adding support for SVG imports
+    config.module.rules.push({
+      test: /\.svg$/,
+      use: ["@svgr/webpack"],
+    });
+    return config;
+  },
+
+  // Define environment variables (optional)
+  env: {
+    NEXT_PUBLIC_API_URL: process.env.NEXT_PUBLIC_API_URL || "https://api.example.com",
+  },
 };
 
 export default nextConfig;
