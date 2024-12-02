@@ -10,12 +10,6 @@ const nextConfig: NextConfig = {
   // Configure for Vercel deployment (standalone output)
   output: "standalone",
 
-  // Set experimental features (optional)
-  experimental: {
-    appDir: true, // Enables the App Router
-    optimizeCss: true, // Optimize CSS for production
-  },
-
   // Allow custom webpack configurations if needed
   webpack: (config) => {
     // Example: Adding support for SVG imports
