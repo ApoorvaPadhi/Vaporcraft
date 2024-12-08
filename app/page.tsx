@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { User, MessageCircle, Settings } from "lucide-react";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
 
 export default function Home() {
@@ -31,23 +31,23 @@ export default function Home() {
   };
 
   return (
-    <div className="bg-background text-primary min-h-screen p-8">
+    <div className="bg-background text-primary min-h-screen p-4 md:p-8">
       {/* Navbar */}
-      <header className="flex justify-between items-center py-4">
+      <header className="flex flex-wrap justify-between items-center py-4">
         <div className="flex items-center gap-2">
           <img
             src="/favicon-32x32.png"
             alt="Vaporcraft Logo"
-            className="h-10 w-10 object-contain"
+            className="h-8 w-8 object-contain md:h-10 md:w-10"
           />
-          <h1 className="text-3xl font-header font-bold">VAPORCRAFT</h1>
+          <h1 className="text-2xl md:text-3xl font-header font-bold">VAPORCRAFT</h1>
         </div>
-        <nav className="flex gap-6">
+        <nav className="flex flex-wrap gap-4 md:gap-6">
           {["About", "Features", "Join"].map((item) => (
             <a
               key={item}
               href={`#${item.toLowerCase()}`}
-              className="relative group font-bold text-lg tracking-wider text-primary transition-colors duration-300"
+              className="relative group font-bold text-sm md:text-lg tracking-wider text-primary transition-colors duration-300"
             >
               <span className="group-hover:text-accent transition-colors duration-300">
                 {item}
@@ -61,7 +61,7 @@ export default function Home() {
       {/* Coming Soon Section */}
       <Section id="home" className="relative flex flex-col items-center justify-center h-screen bg-secondary text-background text-center">
         <motion.h2
-          className="text-5xl font-header"
+          className="text-4xl md:text-5xl font-header"
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.5 }}
@@ -69,7 +69,7 @@ export default function Home() {
           Coming Soon
         </motion.h2>
         <motion.p
-          className="mt-4 font-body text-lg"
+          className="mt-4 font-body text-base md:text-lg"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.5, duration: 1.5 }}
@@ -77,7 +77,7 @@ export default function Home() {
           Veritable AI Powered Online Retail
         </motion.p>
         <motion.p
-          className="mt-4 font-body text-md"
+          className="mt-4 font-body text-sm md:text-md"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1, duration: 1.5 }}
@@ -87,14 +87,14 @@ export default function Home() {
       </Section>
 
       {/* About Section */}
-      <Section id="about" className="py-16 px-8">
-        <h2 className="text-4xl font-header font-semibold mb-6 text-center">
+      <Section id="about" className="py-16 px-4 md:px-8">
+        <h2 className="text-3xl md:text-4xl font-header font-semibold mb-6 text-center">
           About Us
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
           {/* Text Content */}
           <motion.div
-            className="font-body text-lg leading-relaxed"
+            className="font-body text-base md:text-lg leading-relaxed"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2, duration: 1 }}
@@ -137,9 +137,9 @@ export default function Home() {
       </Section>
 
       {/* Features Section */}
-      <Section id="features" className="py-16 px-8 bg-secondary">
-        <h2 className="text-4xl text-background font-header text-center mb-6">Features</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
+      <Section id="features" className="py-16 px-4 md:px-8 bg-secondary">
+        <h2 className="text-3xl md:text-4xl text-background font-header text-center mb-6">Features</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {[
             {
               title: "Your AI Shopping Twin",
@@ -173,17 +173,17 @@ export default function Home() {
             >
               <div className="flex items-center gap-4 mb-4">
                 {feature.icon}
-                <h3 className="font-header text-2xl">{feature.title}</h3>
+                <h3 className="font-header text-xl md:text-2xl">{feature.title}</h3>
               </div>
-              <p className="font-body mt-2">{feature.description}</p>
+              <p className="font-body text-sm md:text-base mt-2">{feature.description}</p>
             </motion.div>
           ))}
         </div>
       </Section>
 
       {/* Join Mailing List */}
-      <Section id="mailing-list" className="py-16 px-8 bg-background text-primary text-center">
-        <h2 className="text-4xl font-header mb-6">Join Our Mailing List</h2>
+      <Section id="mailing-list" className="py-16 px-4 md:px-8 bg-background text-primary text-center">
+        <h2 className="text-3xl md:text-4xl font-header mb-6">Join Our Mailing List</h2>
         <form className="flex flex-col sm:flex-row gap-4 justify-center items-center">
           <input
             type="email"
