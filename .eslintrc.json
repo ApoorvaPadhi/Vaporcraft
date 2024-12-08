@@ -1,3 +1,17 @@
 {
-  "extends": ["next/core-web-vitals", "next/typescript"]
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["@typescript-eslint"],
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended"
+  ],
+  "rules": {
+    "@typescript-eslint/no-unused-vars": [
+      "warn", // Use "warn" to show warnings; change to "off" to disable completely
+      {
+        "argsIgnorePattern": "^_", // Ignore unused arguments prefixed with "_"
+        "varsIgnorePattern": "^unused" // Ignore unused variables prefixed with "unused"
+      }
+    ]
+  }
 }
