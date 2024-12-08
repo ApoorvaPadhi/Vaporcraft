@@ -6,10 +6,11 @@ import { User, MessageCircle, Settings } from "lucide-react";
 import { useEffect, useState, ReactNode } from "react";
 import { useInView } from "react-intersection-observer";
 
+
 interface SectionProps {
-  children: ReactNode; // React elements passed as children
-  id: string; // Unique ID for the section
-  className?: string; // Optional additional class names
+  children: ReactNode; // Accept any valid React child elements
+  id: string;          // The section's ID
+  className?: string;  // Optional additional class names
   style?: React.CSSProperties; // Optional inline styles
 }
 
@@ -30,8 +31,7 @@ export default function Home() {
         initial={{ opacity: 0, y: 50 }}
         animate={inView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 1 }}
-        className={className}
-        style={style}
+        {...props}
       >
         {children}
       </motion.section>
@@ -142,6 +142,66 @@ export default function Home() {
             <div className="absolute inset-0 bg-gradient-to-t from-accent/40 to-transparent rounded-lg pointer-events-none"></div>
           </motion.div>
         </div>
+      </Section>
+
+      {/* Features Section */}
+      <Section id="features" className="py-16 px-4 md:px-8 bg-secondary">
+        <h2 className="text-3xl md:text-4xl text-background font-header text-center mb-6">Features</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          {[
+            {
+              title: "Your AI Shopping Twin",
+              description:
+                "Create your digital persona by sharing your physical, social, and psychological attributes. Our AI understands everything from your style preferences to life events, ensuring recommendations that truly reflect you.",
+              icon: <User className="h-12 w-12 text-accent" />,
+            },
+            {
+              title: "Natural Conversations",
+              description:
+                "Skip the endless scrolling and filtering. Simply tell us about yourself, and our AI will understand your needs, presenting you with the most suitable options for any search.",
+              icon: <MessageCircle className="h-12 w-12 text-accent" />,
+            },
+            {
+              title: "Custom-Crafted Solutions",
+              description:
+                "Beyond standard products, discover products specially curated for your use case. Each recommendation becomes more personalized as our AI learns your preferences.",
+              icon: <Settings className="h-12 w-12 text-accent" />,
+            },
+          ].map((feature, index) => (
+            <motion.div
+              key={index}
+              className="p-6 bg-background text-primary rounded-lg shadow-lg"
+              initial={{ opacity: 0, scale: 0.9, y: 50 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              transition={{
+                duration: 0.8,
+                delay: index * 0.2,
+                ease: "easeOut",
+              }}
+            >
+              <div className="flex items-center gap-4 mb-4">
+                {feature.icon}
+                <h3 className="font-header text-xl md:text-2xl">{feature.title}</h3>
+              </div>
+              <p className="font-body text-sm md:text-base mt-2">{feature.description}</p>
+            </motion.div>
+          ))}
+        </div>
+      </Section>
+
+      {/* Join Mailing List */}
+      <Section id="mailing-list" className="py-16 px-4 md:px-8 bg-background text-primary text-center">
+        <h2 className="text-3xl md:text-4xl font-header mb-6">Join Our Mailing List</h2>
+        <form className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <input
+            type="email"
+            placeholder="Enter your email"
+            className="p-4 text-primary rounded-lg w-full sm:w-auto"
+          />
+          <button className="bg-primary text-background px-6 py-3 rounded-lg">
+            Subscribe
+          </button>
+        </form>
       </Section>
 
       {/* Footer */}
